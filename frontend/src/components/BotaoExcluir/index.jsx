@@ -2,21 +2,30 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import propostas from '../../propostas.json';
 
 export default function BotaoExcluir({ id }) {
   const [excluida, setExcluida] = useState(false);
+  const [erro, setErro] = useState('');
 
-  function Excluir() {
-    const listaAtualizada = propostas.filter((item) => item.id !== id);
-    console.log('Lista após exclusão (simulação):', listaAtualizada);
-    setExcluida(true);
+  async function Excluir() {
+    setErro('');
+    try {
+      const resposta = await fetch(`/api/propostas/${id}`, { method: 'DELETE' });
+      if (!resposta.ok) {
+        const corpo = await resposta.json();
+        setErro(corpo.erro || 'Erro ao excluir proposta.');
+        return;
+      }
+      setExcluida(true);
+    } catch {
+      setErro('Não foi possível conectar ao servidor.');
+    }
   }
 
   if (excluida) {
     return (
       <p>
-        <strong>Proposta excluída (simulação).</strong>{' '}
+        <strong>Proposta excluída.</strong>{' '}
         <Link href="/propostas">Voltar para a listagem</Link>
       </p>
     );
@@ -24,7 +33,8 @@ export default function BotaoExcluir({ id }) {
 
   return (
     <div>
-      <button type="button" onClick={Excluir}>Excluir Proposta</button>
+      {erro && <div className="alert alert-danger">{erro}</div>}
+      <button type="button" className="btn btn-danger" onClick={Excluir}>Excluir Proposta</button>
     </div>
   );
 }

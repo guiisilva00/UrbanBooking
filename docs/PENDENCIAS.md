@@ -9,12 +9,12 @@ Status válidos: `Pendente`, `Confirmado`, `Cancelado`
 - [x] `nova-proposta`: trocar `console.log` por `POST /api/propostas` e exibir o `erro` do backend
 - [x] Backend: criar `PUT /api/propostas/:id` e `DELETE /api/propostas/:id` (model, service, controller, rota)
 - [x] Ligar `FormEditar` ao PUT
-- [ ] Ligar `BotaoExcluir` ao DELETE
+- [x] Ligar `BotaoExcluir` ao DELETE
 - [x] `FormEditar` não tem os campos local, cidade, estado e data; adicionar junto com o PUT
-- [ ] Apagar `frontend/src/propostas.json`
+- [x] Apagar `frontend/src/propostas.json`
 
 ## Outros problemas
-- [ ] Criar a página `/propostas/[id]` (detalhes); o card aponta para ela e hoje dá 404
+- [x] Criar a página `/propostas/[id]` (detalhes); o card aponta para ela e hoje dá 404
 - [x] `config/database.js`: adicionar `dateStrings: true` (evita data com fuso errado)
 - [ ] `.env.example`: `DB_NAME=loja_api` → nome do banco do projeto
 - [ ] `PropostaService.criar` usa `id: 1` falso para passar na validação da classe `Proposta`
