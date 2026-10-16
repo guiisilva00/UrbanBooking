@@ -42,7 +42,7 @@ a:focus-visible {
 }
 
 .logo {
-    height: 34px;
+    height: clamp(44px, 6vw, 64px);
     width: auto;
     mix-blend-mode: screen;
 }

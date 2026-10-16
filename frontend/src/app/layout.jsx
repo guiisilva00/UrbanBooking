@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" className={`${fonteTitulo.variable} ${fonteTexto.variable}`}>
       <body>
-        <header className="topo px-3 px-md-5 py-3">
+        <header className="topo px-3 px-md-5 py-2">
           <nav>
             <Link href="/propostas">Propostas</Link>
           </nav>
