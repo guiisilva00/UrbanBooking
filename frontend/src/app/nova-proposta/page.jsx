@@ -2,23 +2,28 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { CATEGORIAS, ESTADOS } from '../../opcoes';
 
 export default function NovaPropostaPage() {
-    const [cliente, setCliente] = useState('');
-    const [categoria, setCategoria] = useState('Esportivo');
+    const [artista, setArtista] = useState('');
+    const [contratante, setContratante] = useState('');
+    const [descricao, setDescricao] = useState('');
+    const [categoria, setCategoria] = useState(CATEGORIAS[0]);
     const [data, setData] = useState('');
     const [local, setLocal] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [estado, setEstado] = useState('SP');
     const [valor, setValor] = useState('');
 
     const [erro, setErro] = useState('');
     const [sucesso, setSucesso] = useState('');
 
-    function enviarDados(e) {
+    async function enviarDados(e) {
         e.preventDefault();
         setErro('');
         setSucesso('');
 
-        if (!cliente.trim() || !data || !local.trim() || !valor) {
+        if (!artista.trim() || !contratante.trim() || !data || !local.trim() || !cidade.trim() || !valor) {
             setErro('Por favor, preencha todos os campos obrigatórios.');
             return;
         }
@@ -29,21 +34,41 @@ export default function NovaPropostaPage() {
         }
 
         const novaProposta = {
-            id: Date.now(),
-            cliente: cliente.trim(),
+            artista: artista.trim(),
+            contratante: contratante.trim(),
             categoria,
+            descricao: descricao.trim(),
             data,
             local: local.trim(),
+            cidade: cidade.trim(),
+            estado,
             valor: Number(valor),
             status: 'Pendente'
         };
 
-        console.log('Nova proposta cadastrada:', novaProposta);
+        try {
+            const resposta = await fetch('/api/propostas', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(novaProposta)
+            });
+            const corpo = await resposta.json();
+            if (!resposta.ok) {
+                setErro(corpo.erro || 'Erro ao cadastrar proposta.');
+                return;
+            }
+        } catch {
+            setErro('Não foi possível conectar ao servidor.');
+            return;
+        }
 
         setSucesso('Proposta cadastrada com sucesso!');
-        setCliente('');
+        setArtista('');
+        setContratante('');
+        setDescricao('');
         setData('');
         setLocal('');
+        setCidade('');
         setValor('');
     }
 
@@ -56,13 +81,24 @@ export default function NovaPropostaPage() {
 
             <form onSubmit={enviarDados} className="row g-3">
                 <div className="col-12 col-md-6">
-                    <label htmlFor="cliente" className="form-label">Cliente / Contratante</label>
+                    <label htmlFor="artista" className="form-label">Artista</label>
                     <input
-                        id="cliente"
+                        id="artista"
                         type="text"
                         className="form-control"
-                        value={cliente}
-                        onChange={(e) => setCliente(e.target.value)}
+                        value={artista}
+                        onChange={(e) => setArtista(e.target.value)}
+                    />
+                </div>
+
+                <div className="col-12 col-md-6">
+                    <label htmlFor="contratante" className="form-label">Contratante</label>
+                    <input
+                        id="contratante"
+                        type="text"
+                        className="form-control"
+                        value={contratante}
+                        onChange={(e) => setContratante(e.target.value)}
                     />
                 </div>
 
@@ -74,11 +110,7 @@ export default function NovaPropostaPage() {
                         value={categoria}
                         onChange={(e) => setCategoria(e.target.value)}
                     >
-                        <option value="Esportivo">Esportivo</option>
-                        <option value="Casamento">Casamento</option>
-                        <option value="Jornalístico">Jornalístico</option>
-                        <option value="Social / Aniversário">Social / Aniversário</option>
-                        <option value="Corporativo">Corporativo</option>
+                        {CATEGORIAS.map((c) => <option key={c} value={c}>{c}</option>)}
                     </select>
                 </div>
 
@@ -94,7 +126,7 @@ export default function NovaPropostaPage() {
                 </div>
 
                 <div className="col-12 col-md-4">
-                    <label htmlFor="local" className="form-label">Local</label>
+                    <label htmlFor="local" className="form-label">Local (casa de show)</label>
                     <input
                         id="local"
                         type="text"
@@ -102,6 +134,29 @@ export default function NovaPropostaPage() {
                         value={local}
                         onChange={(e) => setLocal(e.target.value)}
                     />
+                </div>
+
+                <div className="col-12 col-md-4">
+                    <label htmlFor="cidade" className="form-label">Cidade</label>
+                    <input
+                        id="cidade"
+                        type="text"
+                        className="form-control"
+                        value={cidade}
+                        onChange={(e) => setCidade(e.target.value)}
+                    />
+                </div>
+
+                <div className="col-12 col-md-4">
+                    <label htmlFor="estado" className="form-label">Estado</label>
+                    <select
+                        id="estado"
+                        className="form-select"
+                        value={estado}
+                        onChange={(e) => setEstado(e.target.value)}
+                    >
+                        {ESTADOS.map((uf) => <option key={uf} value={uf}>{uf}</option>)}
+                    </select>
                 </div>
 
                 <div className="col-12 col-md-4">
@@ -113,6 +168,17 @@ export default function NovaPropostaPage() {
                         className="form-control"
                         value={valor}
                         onChange={(e) => setValor(e.target.value)}
+                    />
+                </div>
+
+                <div className="col-12">
+                    <label htmlFor="descricao" className="form-label">Descrição (opcional)</label>
+                    <textarea
+                        id="descricao"
+                        className="form-control"
+                        rows={3}
+                        value={descricao}
+                        onChange={(e) => setDescricao(e.target.value)}
                     />
                 </div>
 

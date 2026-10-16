@@ -20,8 +20,12 @@ export function criarPropostaService({ propostaModel }) {
     const proposta = new Proposta({ id: 1, ...dados });
     return propostaModel.criar({
       artista: proposta.artista,
-      evento: proposta.evento,
+      contratante: proposta.contratante,
+      categoria: proposta.categoria,
+      descricao: proposta.descricao,
       local: proposta.local,
+      cidade: proposta.cidade,
+      estado: proposta.estado,
       valor: proposta.valor,
       data: proposta.data,
       status: proposta.status

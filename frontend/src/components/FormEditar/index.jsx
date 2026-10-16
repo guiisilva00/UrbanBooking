@@ -2,9 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { CATEGORIAS } from '../../opcoes';
 
 export default function FormEditar({ propostaInicial }) {
-    const [cliente, setCliente] = useState(propostaInicial.cliente);
+    const [artista, setArtista] = useState(propostaInicial.artista);
+    const [contratante, setContratante] = useState(propostaInicial.contratante);
+    const [descricao, setDescricao] = useState(propostaInicial.descricao || '');
     const [categoria, setCategoria] = useState(propostaInicial.categoria);
     const [valor, setValor] = useState(propostaInicial.valor);
     const [status, setStatus] = useState(propostaInicial.status);
@@ -15,8 +18,10 @@ export default function FormEditar({ propostaInicial }) {
 
         const propostaAtualizada = {
             ...propostaInicial,
-            cliente,
+            artista,
+            contratante,
             categoria,
+            descricao,
             valor: Number(valor),
             status
         };
@@ -30,23 +35,34 @@ export default function FormEditar({ propostaInicial }) {
             {mensagem && <div className="alert alert-success">{mensagem}</div>}
 
             <div className="col-12 col-md-6">
-                <label className="form-label">Cliente</label>
+                <label className="form-label">Artista</label>
                 <input
                     type="text"
                     className="form-control"
-                    value={cliente}
-                    onChange={(e) => setCliente(e.target.value)}
+                    value={artista}
+                    onChange={(e) => setArtista(e.target.value)}
+                />
+            </div>
+
+            <div className="col-12 col-md-6">
+                <label className="form-label">Contratante</label>
+                <input
+                    type="text"
+                    className="form-control"
+                    value={contratante}
+                    onChange={(e) => setContratante(e.target.value)}
                 />
             </div>
 
             <div className="col-12 col-md-6">
                 <label className="form-label">Categoria</label>
-                <input
-                    type="text"
-                    className="form-control"
+                <select
+                    className="form-select"
                     value={categoria}
                     onChange={(e) => setCategoria(e.target.value)}
-                />
+                >
+                    {CATEGORIAS.map((c) => <option key={c} value={c}>{c}</option>)}
+                </select>
             </div>
 
             <div className="col-12 col-md-6">
@@ -67,9 +83,19 @@ export default function FormEditar({ propostaInicial }) {
                     onChange={(e) => setStatus(e.target.value)}
                 >
                     <option value="Pendente">Pendente</option>
-                    <option value="Aceita">Aceita</option>
-                    <option value="Recusada">Recusada</option>
+                    <option value="Confirmado">Confirmado</option>
+                    <option value="Cancelado">Cancelado</option>
                 </select>
+            </div>
+
+            <div className="col-12">
+                <label className="form-label">Descrição</label>
+                <textarea
+                    className="form-control"
+                    rows={3}
+                    value={descricao}
+                    onChange={(e) => setDescricao(e.target.value)}
+                />
             </div>
 
             <div className="col-12 d-flex gap-2 mt-4">

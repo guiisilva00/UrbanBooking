@@ -11,8 +11,8 @@ export function criarPropostaModel({ pool }) {
   }
 
   async function criar(proposta) {
-    const sql = 'INSERT INTO propostas (artista, evento, local, valor, data, status) VALUES (?, ?, ?, ?, ?, ?)';
-    const valores = [proposta.artista, proposta.evento, proposta.local, proposta.valor, proposta.data, proposta.status];
+    const sql = 'INSERT INTO propostas (artista, contratante, categoria, descricao, local, cidade, estado, valor, `data`, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const valores = [proposta.artista, proposta.contratante, proposta.categoria, proposta.descricao, proposta.local, proposta.cidade, proposta.estado, proposta.valor, proposta.data, proposta.status];
     const [resultado] = await pool.query(sql, valores);
     return { ...proposta, id: resultado.insertId };
   }
