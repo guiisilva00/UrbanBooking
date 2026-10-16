@@ -4,7 +4,7 @@ export default function CardProposta({ proposta }) {
     return (
         <div className='card shadow-sm h-100'>
             <div className='card-body'>
-                <h3 className="card-title text-primary fs-5">{proposta.artista}</h3>
+                <h3 className="card-title fs-5">{proposta.artista}</h3>
                 <p className="card-text mb-1"><strong>Contratante:</strong> {proposta.contratante}</p>
                 <p className="card-subtitle mb-2 text-muted"><strong>Categoria:</strong> {proposta.categoria}</p>
                 <p className="card-text mb-1"><strong>Data:</strong> {proposta.data}</p>
