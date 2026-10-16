@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "artista": "Djonga",
+    "contratante": "Festival Cena 2K",
+    "categoria": "Boom Bap",
+    "data": "2026-04-15",
+    "local": "Arena Anhembi - São Paulo/SP",
+    "valor": 45000,
+    "status": "Confirmado"
+  },
+  {
+    "id": 2,
+    "artista": "Matuê",
+    "contratante": "Mainstreet Records",
+    "categoria": "Trap",
+    "data": "2026-05-20",
+    "local": "Jeunesse Arena - Rio de Janeiro/RJ",
+    "valor": 60000,
+    "status": "Confirmado"
+  },
+  {
+    "id": 3,
+    "artista": "Racionais MC's",
+    "contratante": "Auditório Araújo Vianna",
+    "categoria": "Boom Bap",
+    "data": "2026-04-18",
+    "local": "Porto Alegre/RS",
+    "valor": 80000,
+    "status": "Pendente"
+  },
+  {
+    "id": 4,
+    "artista": "Teto",
+    "contratante": "Recife Trap Festival",
+    "categoria": "Trap",
+    "data": "2026-05-10",
+    "local": "Classic Hall - Olinda/PE",
+    "valor": 35000,
+    "status": "Confirmado"
+  },
+  {
+    "id": 5,
+    "artista": "Major RD",
+    "contratante": "Batalha da Lapa",
+    "categoria": "Trap",
+    "data": "2026-06-05",
+    "local": "Circo Voador - Rio de Janeiro/RJ",
+    "valor": 28000,
+    "status": "Pendente"
+  },
+  {
+    "id": 6,
+    "artista": "BK'",
+    "contratante": "Urban Arts Produtora",
+    "categoria": "Boom Bap",
+    "data": "2026-06-12",
+    "local": "Audio - São Paulo/SP",
+    "valor": 40000,
+    "status": "Confirmado"
+  },
+  {
+    "id": 7,
+    "artista": "Veigh",
+    "contratante": "Festival Trap In",
+    "categoria": "Trap",
+    "data": "2026-06-25",
+    "local": "Mineirinho - Belo Horizonte/MG",
+    "valor": 50000,
+    "status": "Pendente"
+  },
+  {
+    "id": 8,
+    "artista": "Filipe Ret",
+    "contratante": "Vivaz Produtora",
+    "categoria": "Trap",
+    "data": "2026-07-11",
+    "local": "Farmasi Arena - Rio de Janeiro/RJ",
+    "valor": 70000,
+    "status": "Confirmado"
+  },
+  {
+    "id": 9,
+    "artista": "Criolo",
+    "contratante": "Centro Cultural Hip Hop",
+    "categoria": "Boom Bap",
+    "data": "2026-07-15",
+    "local": "Circo Voador - Rio de Janeiro/RJ",
+    "valor": 32000,
+    "status": "Pendente"
+  },
+  {
+    "id": 10,
+    "artista": "Batalha da Aldeia (Especial)",
+    "contratante": "Prefeitura de Barueri",
+    "categoria": "Batalha de MCs",
+    "data": "2026-07-28",
+    "local": "Praça das Culturas - Barueri/SP",
+    "valor": 15000,
+    "status": "Cancelado"
+  },
+  {
+    "id": 11,
+    "artista": "Sabotage (Tributo / Família)",
+    "contratante": "Homenagem Zona Sul",
+    "categoria": "Boom Bap",
+    "data": "2026-08-05",
+    "local": "Centro Cultural São Paulo",
+    "valor": 20000,
+    "status": "Confirmado"
+  },
+  {
+    "id": 12,
+    "artista": "Orochi",
+    "contratante": "Mainstreet Festival",
+    "categoria": "Trap",
+    "data": "2026-08-14",
+    "local": "Arena Park - Curitiba/PR",
+    "valor": 55000,
+    "status": "Pendente"
+  },
+  {
+    "id": 13,
+    "artista": "Emicida",
+    "contratante": "Laboratório Fantasma",
+    "categoria": "Boom Bap",
+    "data": "2026-09-04",
+    "local": "Espaço Unimed - São Paulo/SP",
+    "valor": 65000,
+    "status": "Pendente"
+  },
+  {
+    "id": 14,
+    "artista": "Poze do Rodo",
+    "contratante": "Baile do Rodo",
+    "categoria": "Funk / Trap",
+    "data": "2026-09-18",
+    "local": "Espaço Hall - Rio de Janeiro/RJ",
+    "valor": 48000,
+    "status": "Confirmado"
+  },
+  {
+    "id": 15,
+    "artista": "Xamã",
+    "contratante": "Festival Verão Hip Hop",
+    "categoria": "Trap",
+    "data": "2026-09-22",
+    "local": "Praia de Iracema - Fortaleza/CE",
+    "valor": 38000,
+    "status": "Pendente"
+  },
+  {
+    "id": 16,
+    "artista": "Febem",
+    "contratante": "Underground SP",
+    "categoria": "Boom Bap",
+    "data": "2026-10-02",
+    "local": "Jai Club - São Paulo/SP",
+    "valor": 12000,
+    "status": "Confirmado"
+  },
+  {
+    "id": 17,
+    "artista": "TZ da Coronel",
+    "contratante": "Produtora Favela Cria",
+    "categoria": "Trap",
+    "data": "2026-10-18",
+    "local": "Armazém Hall - Salvador/BA",
+    "valor": 30000,
+    "status": "Pendente"
+  },
+  {
+    "id": 18,
+    "artista": "ConeCrewDiretoria",
+    "contratante": "Reunião da Firma Tour",
+    "categoria": "Boom Bap",
+    "data": "2026-11-07",
+    "local": "Fundição Progresso - Rio de Janeiro/RJ",
+    "valor": 45000,
+    "status": "Cancelado"
+  },
+  {
+    "id": 19,
+    "artista": "Dj Cia & Convidados",
+    "contratante": "Batalha de Breaking",
+    "categoria": "Batalha de MCs",
+    "data": "2026-11-20",
+    "local": "Centro Esportivo - Brasília/DF",
+    "valor": 18000,
+    "status": "Confirmado"
+  },
+  {
+    "id": 20,
+    "artista": "L7NNON",
+    "contratante": "Soul Music Produções",
+    "categoria": "Trap",
+    "data": "2026-12-12",
+    "local": "Riocentro - Rio de Janeiro/RJ",
+    "valor": 65000,
+    "status": "Pendente"
+  }
+]
