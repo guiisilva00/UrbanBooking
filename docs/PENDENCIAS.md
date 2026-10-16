@@ -8,8 +8,9 @@ Status válidos: `Pendente`, `Confirmado`, `Cancelado`
 - [x] `propostas/page.jsx`: trocar `propostas.json` por `fetch` em `GET /api/propostas` (ler `.dados`)
 - [x] `nova-proposta`: trocar `console.log` por `POST /api/propostas` e exibir o `erro` do backend
 - [x] Backend: criar `PUT /api/propostas/:id` e `DELETE /api/propostas/:id` (model, service, controller, rota)
-- [ ] Ligar `FormEditar` ao PUT e `BotaoExcluir` ao DELETE
-- [ ] `FormEditar` não tem os campos local, cidade, estado e data; adicionar junto com o PUT
+- [x] Ligar `FormEditar` ao PUT
+- [ ] Ligar `BotaoExcluir` ao DELETE
+- [x] `FormEditar` não tem os campos local, cidade, estado e data; adicionar junto com o PUT
 - [ ] Apagar `frontend/src/propostas.json`
 
 ## Outros problemas

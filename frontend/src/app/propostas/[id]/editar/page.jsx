@@ -1,12 +1,11 @@
-import propostas from '../../../../propostas.json';
 import FormEditar from '../../../../components/FormEditar';
 import Link from 'next/link';
 
 export default async function EditarPropostaPage({ params }) {
     const { id } = await params;
-    const proposta = propostas.find((p) => p.id === Number(id));
+    const resposta = await fetch(`http://localhost:3005/api/propostas/${id}`, { cache: 'no-store' });
 
-    if (!proposta) {
+    if (!resposta.ok) {
         return (
             <div className="container py-4">
                 <div className="alert alert-danger">Proposta não encontrada.</div>
@@ -14,6 +13,8 @@ export default async function EditarPropostaPage({ params }) {
             </div>
         );
     }
+
+    const { dados: proposta } = await resposta.json();
 
     return (
         <div className="container py-4">
