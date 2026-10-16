@@ -101,3 +101,58 @@ a:focus-visible {
 footer {
     color: var(--chocolate-brown);
 }
+
+.detalhe-artista {
+    font-family: var(--fonte-titulo), sans-serif;
+    font-size: clamp(4rem, 13vw, 8rem);
+    line-height: 0.9;
+    color: var(--dark-wine);
+    margin-bottom: 0.5rem;
+}
+
+.etiqueta {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--camel);
+}
+
+.status-confirmado {
+    background-color: var(--dark-wine);
+    border-color: var(--dark-wine);
+    color: var(--light-apricot);
+}
+
+.status-pendente {
+    background-color: var(--camel);
+    color: var(--dark-coffee);
+}
+
+.status-cancelado {
+    border-color: var(--dark-coffee);
+    text-decoration: line-through;
+}
+
+.ingresso {
+    border: 2px dashed var(--camel);
+    border-radius: 0.5rem;
+}
+
+.ingresso > div + div {
+    border-top: 2px dashed var(--camel);
+}
+
+@media (min-width: 768px) {
+    .ingresso > div + div {
+        border-top: none;
+        border-left: 2px dashed var(--camel);
+    }
+}
+
+.btn-outline-danger {
+    --bs-btn-color: var(--dark-wine);
+    --bs-btn-border-color: var(--dark-wine);
+    --bs-btn-hover-bg: var(--dark-wine);
+    --bs-btn-hover-border-color: var(--dark-wine);
+    --bs-btn-hover-color: var(--light-apricot);
+}

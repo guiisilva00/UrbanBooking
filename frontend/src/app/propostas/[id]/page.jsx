@@ -15,23 +15,44 @@ export default async function DetalhesPropostaPage({ params }) {
     }
 
     const { dados: proposta } = await resposta.json();
+    const data = new Date(`${proposta.data}T00:00`);
 
     return (
-        <div className="container py-4">
-            <h1 className="h3 mb-4">{proposta.artista}</h1>
+        <div className="container py-5" style={{ maxWidth: '900px' }}>
+            <div className="text-center mb-5">
+                <div className="d-flex justify-content-center gap-2 mb-3">
+                    <span className="etiqueta">{proposta.categoria}</span>
+                    <span className={`etiqueta status-${proposta.status.toLowerCase()}`}>{proposta.status}</span>
+                </div>
+                <h1 className="detalhe-artista">{proposta.artista}</h1>
+                <p className="texto-secundario mb-0">Proposta de {proposta.contratante}</p>
+            </div>
 
-            <p><strong>Contratante:</strong> {proposta.contratante}</p>
-            <p><strong>Categoria:</strong> {proposta.categoria}</p>
-            <p><strong>Data:</strong> {proposta.data}</p>
-            <p><strong>Local:</strong> {proposta.local} - {proposta.cidade}/{proposta.estado}</p>
-            <p><strong>Valor:</strong> {Number(proposta.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-            <p><strong>Situação:</strong> {proposta.status}</p>
-            {proposta.descricao && <p><strong>Descrição:</strong> {proposta.descricao}</p>}
+            <div className="ingresso row g-0 mb-4">
+                <div className="col-12 col-md-4 p-4">
+                    <p className="small texto-secundario mb-1">Quando</p>
+                    <p className="fs-5 fw-semibold mb-0">{data.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
+                    <p className="mb-0">{data.toLocaleDateString('pt-BR', { weekday: 'long' })}</p>
+                </div>
+                <div className="col-12 col-md-4 p-4">
+                    <p className="small texto-secundario mb-1">Onde</p>
+                    <p className="fs-5 fw-semibold mb-0">{proposta.local}</p>
+                    <p className="mb-0">{proposta.cidade}/{proposta.estado}</p>
+                </div>
+                <div className="col-12 col-md-4 p-4">
+                    <p className="small texto-secundario mb-1">Cachê</p>
+                    <p className="fs-5 fw-semibold mb-0">{Number(proposta.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+                </div>
+            </div>
 
-            <div className="d-flex gap-2 mt-4">
-                <Link href={`/propostas/${proposta.id}/editar`} className="btn btn-primary">Editar</Link>
+            {proposta.descricao && (
+                <p className="text-center fst-italic mx-auto mb-5" style={{ maxWidth: '36rem' }}>“{proposta.descricao}”</p>
+            )}
+
+            <div className="d-flex justify-content-center align-items-start flex-wrap gap-2">
+                <Link href={`/propostas/${proposta.id}/editar`} className="btn btn-primary">Editar proposta</Link>
                 <BotaoExcluir id={proposta.id} />
-                <Link href="/propostas" className="btn btn-outline-secondary">Voltar</Link>
+                <Link href="/propostas" className="btn btn-link texto-secundario">Voltar para a lista</Link>
             </div>
         </div>
     );

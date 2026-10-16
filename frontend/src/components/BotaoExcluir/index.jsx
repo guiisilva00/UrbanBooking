@@ -34,7 +34,7 @@ export default function BotaoExcluir({ id }) {
   return (
     <div>
       {erro && <div className="alert alert-danger">{erro}</div>}
-      <button type="button" className="btn btn-danger" onClick={Excluir}>Excluir Proposta</button>
+      <button type="button" className="btn btn-outline-danger" onClick={Excluir}>Excluir proposta</button>
     </div>
   );
 }
