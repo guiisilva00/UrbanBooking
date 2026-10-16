@@ -1,5 +1,103 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
-footer{
-    text-align: center;
+:root {
+    --dark-wine: #6f1d1b;
+    --camel: #bb9457;
+    --dark-coffee: #432818;
+    --chocolate-brown: #99582a;
+    --light-apricot: #ffe6a7;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--dark-coffee);
+    font-family: var(--fonte-texto), sans-serif;
+}
+
+main {
+    flex: 1;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--camel);
+    outline-offset: 3px;
+}
+
+.topo {
+    background-color: var(--dark-coffee);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+}
+
+.topo a {
+    color: var(--light-apricot);
+    text-decoration: none;
+}
+
+.topo a:hover {
+    color: var(--camel);
+}
+
+.logo {
+    height: 34px;
+    width: auto;
+    mix-blend-mode: screen;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--dark-wine);
+    --bs-btn-border-color: var(--dark-wine);
+    --bs-btn-hover-bg: var(--dark-coffee);
+    --bs-btn-hover-border-color: var(--dark-coffee);
+    --bs-btn-active-bg: var(--dark-coffee);
+}
+
+.texto-secundario {
+    color: var(--chocolate-brown);
+}
+
+.cartaz {
+    background-color: var(--dark-wine);
+    color: var(--light-apricot);
+}
+
+.cartaz-data {
+    font-family: var(--fonte-titulo), sans-serif;
+    font-size: 2rem;
+    color: var(--camel);
+}
+
+.cartaz-artista {
+    font-family: var(--fonte-titulo), sans-serif;
+    font-size: clamp(3.5rem, 10vw, 7.5rem);
+    line-height: 0.9;
+    margin: 0;
+}
+
+.cartaz .btn {
+    --bs-btn-color: var(--dark-wine);
+    --bs-btn-bg: var(--light-apricot);
+    --bs-btn-hover-bg: var(--camel);
+    --bs-btn-hover-color: var(--dark-coffee);
+}
+
+.situacao {
+    border: 1px solid var(--camel);
+}
+
+.situacao li + li {
+    border-top: 1px solid color-mix(in srgb, var(--camel) 40%, transparent);
+}
+
+.situacao-total {
+    font-family: var(--fonte-titulo), sans-serif;
+    font-size: 2.25rem;
+    color: var(--dark-wine);
+}
+
+footer {
+    color: var(--chocolate-brown);
 }
