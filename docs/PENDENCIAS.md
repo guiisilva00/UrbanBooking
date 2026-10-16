@@ -1,6 +1,6 @@
 # Pendências da integração front ↔ back
 
-Padrão de campos (migration): `artista, contratante, categoria, descricao, local, valor, data, status`
+Padrão de campos: `artista, contratante, categoria, descricao, local, valor, data, status`
 Status válidos: `Pendente`, `Confirmado`, `Cancelado`
 
 ## Integração

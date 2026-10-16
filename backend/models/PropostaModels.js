@@ -1,31 +1,38 @@
-export function criarPropostaModel({ pool }) {
+// dados em memória: ao reiniciar a API, a lista volta a ser esta
+const propostasIniciais = [
+  { id: 1, artista: 'Djonga', contratante: 'Festival Cena 2K', categoria: 'Boom Bap', descricao: 'Show principal de sábado', local: 'Arena Anhembi', cidade: 'São Paulo', estado: 'SP', valor: 45000, data: '2026-04-15', status: 'Confirmado' },
+  { id: 2, artista: 'Matuê', contratante: 'Mainstreet Records', categoria: 'Trap', descricao: '', local: 'Espaço Unimed', cidade: 'São Paulo', estado: 'SP', valor: 80000, data: '2026-05-20', status: 'Pendente' },
+  { id: 3, artista: 'Racionais MCs', contratante: 'Prefeitura de BH', categoria: 'Rap', descricao: 'Virada Cultural', local: 'Praça da Estação', cidade: 'Belo Horizonte', estado: 'MG', valor: 120000, data: '2026-06-10', status: 'Pendente' },
+  { id: 4, artista: 'Batalha da Aldeia', contratante: 'SESC Barueri', categoria: 'Batalha de Rima', descricao: '', local: 'SESC Barueri', cidade: 'Barueri', estado: 'SP', valor: 8000, data: '2026-03-02', status: 'Cancelado' }
+];
+
+export function criarPropostaModel() {
+  const propostas = [...propostasIniciais];
+  let proximoId = propostas.length + 1;
+
   async function listarTodos() {
-    const [linhas] = await pool.query('SELECT * FROM propostas');
-    return linhas.map((p) => ({ ...p, valor: Number(p.valor) }));
+    return propostas;
   }
 
   async function buscarPorId(id) {
-    const [linhas] = await pool.query('SELECT * FROM propostas WHERE id = ?', [id]);
-    if (linhas.length === 0) return null;
-    return { ...linhas[0], valor: Number(linhas[0].valor) };
+    return propostas.find((p) => p.id === id) || null;
   }
 
   async function criar(proposta) {
-    const sql = 'INSERT INTO propostas (artista, contratante, categoria, descricao, local, cidade, estado, valor, `data`, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    const valores = [proposta.artista, proposta.contratante, proposta.categoria, proposta.descricao, proposta.local, proposta.cidade, proposta.estado, proposta.valor, proposta.data, proposta.status];
-    const [resultado] = await pool.query(sql, valores);
-    return { ...proposta, id: resultado.insertId };
+    const nova = { ...proposta, id: proximoId++ };
+    propostas.push(nova);
+    return nova;
   }
 
   async function atualizar(id, proposta) {
-    const sql = 'UPDATE propostas SET artista = ?, contratante = ?, categoria = ?, descricao = ?, local = ?, cidade = ?, estado = ?, valor = ?, `data` = ?, status = ? WHERE id = ?';
-    const valores = [proposta.artista, proposta.contratante, proposta.categoria, proposta.descricao, proposta.local, proposta.cidade, proposta.estado, proposta.valor, proposta.data, proposta.status, id];
-    await pool.query(sql, valores);
-    return { ...proposta, id };
+    const indice = propostas.findIndex((p) => p.id === id);
+    propostas[indice] = { ...proposta, id };
+    return propostas[indice];
   }
 
   async function excluir(id) {
-    await pool.query('DELETE FROM propostas WHERE id = ?', [id]);
+    const indice = propostas.findIndex((p) => p.id === id);
+    propostas.splice(indice, 1);
   }
 
   return { listarTodos, buscarPorId, criar, atualizar, excluir };

@@ -1,3 +1,0 @@
-ALTER TABLE propostas
-  ADD COLUMN cidade VARCHAR(100) NOT NULL AFTER local,
-  ADD COLUMN estado CHAR(2) NOT NULL AFTER cidade;

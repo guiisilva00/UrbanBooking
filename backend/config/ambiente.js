@@ -1,4 +1,4 @@
-const nomesObrigatorios = ['PORT', 'DB_HOST', 'DB_PORT', 'DB_USER', 'DB_NAME'];
+const nomesObrigatorios = ['PORT'];
 
 export function carregarAmbiente(arquivoDeConfiguracao) {
   if (arquivoDeConfiguracao) {
@@ -22,16 +22,11 @@ export function carregarAmbiente(arquivoDeConfiguracao) {
   if (!Number.isInteger(porta) || porta < 1 || porta > 65535) {
     throw new Error('PORT deve ser um inteiro entre 1 e 65535.');
   }
-  const portaBanco = Number(process.env.DB_PORT);
-  if (!Number.isInteger(portaBanco) || portaBanco < 1 || portaBanco > 65535) {
-    throw new Error('DB_PORT deve ser um inteiro entre 1 e 65535.');
-  }
 
   return {
     nomeAluno: process.env.NOME_ALUNO,
     turma: process.env.TURMA,
     porta,
-    portaBanco,
     ambiente: process.env.NODE_ENV || 'development'
   };
 }

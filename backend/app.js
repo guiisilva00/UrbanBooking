@@ -1,5 +1,4 @@
 import express from 'express';
-import { criarPool } from './config/database.js';
 import { criarPropostaModel } from './models/PropostaModels.js';
 import { criarPropostaService } from './services/PropostaService.js';
 import { criarPropostaController } from './controllers/PropostaController.js';
@@ -9,8 +8,7 @@ export const app = express();
 
 app.use(express.json());
 
-const pool = criarPool();
-const propostaModel = criarPropostaModel({ pool });
+const propostaModel = criarPropostaModel();
 const propostaService = criarPropostaService({ propostaModel });
 const propostaController = criarPropostaController({ propostaService });
 const propostaRoutes = criarPropostaRoutes({ controller: propostaController });
