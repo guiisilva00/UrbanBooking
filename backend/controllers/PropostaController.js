@@ -28,5 +28,26 @@ export function criarPropostaController({ propostaService }) {
     }
   }
 
-  return { listar, buscar, criar };
+  async function atualizar(req, res, next) {
+    try {
+      const propostaAtualizada = await propostaService.atualizar(req.params.id, req.body);
+      res.status(200).json({ sucesso: true, dados: propostaAtualizada });
+    } catch (erro) {
+      if (erro.message.includes('não encontrada')) return res.status(404).json({ erro: erro.message });
+      res.status(400).json({ sucesso: false, erro: erro.message });
+    }
+  }
+
+  async function excluir(req, res, next) {
+    try {
+      await propostaService.excluir(req.params.id);
+      res.status(200).json({ sucesso: true, mensagem: 'Proposta excluída' });
+    } catch (erro) {
+      if (erro instanceof TypeError) return res.status(400).json({ erro: erro.message });
+      if (erro.message.includes('não encontrada')) return res.status(404).json({ erro: erro.message });
+      next(erro);
+    }
+  }
+
+  return { listar, buscar, criar, atualizar, excluir };
 }

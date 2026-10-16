@@ -7,6 +7,7 @@ export function criarPool(){
         user: process.env.DB_USER,
         password: process.env.DB_PASS || '',
         database: process.env.DB_NAME,
+        dateStrings: true, // devolve DATE como '2026-04-15' pra n ficar estranho na hora de ver a data
         waitForConnections: true, //permite fila, se estiver False, as 11º coneção retorna erro
         connectionLimit: 10, //limite máximo de conexões simultaneas
         queueLimit: 0 // limite da fila do waitForConnections, quando estiver 0 a fila é infinita

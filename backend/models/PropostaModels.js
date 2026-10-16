@@ -17,5 +17,16 @@ export function criarPropostaModel({ pool }) {
     return { ...proposta, id: resultado.insertId };
   }
 
-  return { listarTodos, buscarPorId, criar };
+  async function atualizar(id, proposta) {
+    const sql = 'UPDATE propostas SET artista = ?, contratante = ?, categoria = ?, descricao = ?, local = ?, cidade = ?, estado = ?, valor = ?, `data` = ?, status = ? WHERE id = ?';
+    const valores = [proposta.artista, proposta.contratante, proposta.categoria, proposta.descricao, proposta.local, proposta.cidade, proposta.estado, proposta.valor, proposta.data, proposta.status, id];
+    await pool.query(sql, valores);
+    return { ...proposta, id };
+  }
+
+  async function excluir(id) {
+    await pool.query('DELETE FROM propostas WHERE id = ?', [id]);
+  }
+
+  return { listarTodos, buscarPorId, criar, atualizar, excluir };
 }
