@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
 
-        <footer className="container py-4 small">
+        <footer className="container py-4 small text-center">
           Urban Booking, gestão de propostas de shows de Hip Hop.
         </footer>
       </body>
