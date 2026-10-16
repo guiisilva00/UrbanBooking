@@ -156,3 +156,79 @@ footer {
     --bs-btn-hover-border-color: var(--dark-wine);
     --bs-btn-hover-color: var(--light-apricot);
 }
+
+.titulo-pagina {
+    font-family: var(--fonte-titulo), sans-serif;
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    line-height: 0.9;
+    color: var(--dark-wine);
+    margin-bottom: 0.25rem;
+}
+
+.filtro {
+    color: var(--dark-coffee);
+    text-decoration: none;
+}
+
+.filtro:hover {
+    background-color: color-mix(in srgb, var(--light-apricot) 50%, transparent);
+}
+
+.filtro-ativo,
+.filtro-ativo:hover {
+    background-color: var(--dark-coffee);
+    border-color: var(--dark-coffee);
+    color: var(--light-apricot);
+}
+
+.agenda {
+    border-top: 2px dashed var(--camel);
+}
+
+.agenda li {
+    border-bottom: 2px dashed var(--camel);
+}
+
+.linha-proposta {
+    color: inherit;
+    text-decoration: none;
+    margin: 0;
+}
+
+.linha-proposta:hover {
+    background-color: color-mix(in srgb, var(--light-apricot) 45%, transparent);
+    color: inherit;
+}
+
+.linha-dia,
+.linha-artista {
+    display: block;
+    font-family: var(--fonte-titulo), sans-serif;
+    line-height: 1;
+}
+
+.linha-dia {
+    font-size: 2.25rem;
+    color: var(--dark-wine);
+}
+
+.linha-mes {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--chocolate-brown);
+}
+
+.linha-artista {
+    font-size: 1.9rem;
+}
+
+.ficha {
+    border: 2px dashed var(--camel);
+    border-radius: 0.5rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--camel);
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--camel) 30%, transparent);
+}

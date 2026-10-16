@@ -1,21 +1,27 @@
 import Link from 'next/link';
 
 export default function CardProposta({ proposta }) {
+    const data = new Date(`${proposta.data}T00:00`);
+
     return (
-        <div className='card shadow-sm h-100'>
-            <div className='card-body'>
-                <h3 className="card-title fs-5">{proposta.artista}</h3>
-                <p className="card-text mb-1"><strong>Contratante:</strong> {proposta.contratante}</p>
-                <p className="card-subtitle mb-2 text-muted"><strong>Categoria:</strong> {proposta.categoria}</p>
-                <p className="card-text mb-1"><strong>Data:</strong> {proposta.data}</p>
-                <p className="card-text mb-1"><strong>Local:</strong> {proposta.local} - {proposta.cidade}/{proposta.estado}</p>
-                <p className="card-text mb-1"><strong>Valor:</strong> {Number(proposta.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-                {proposta.descricao && <p className="card-text mb-1">{proposta.descricao}</p>}
-                <p className="card-text mb-3"><strong>Situação:</strong> {proposta.status}</p>
-                <Link href={`/propostas/${proposta.id}`} className="btn btn-primary btn-sm">
-                    Ver detalhes
-                </Link>
+        <Link href={`/propostas/${proposta.id}`} className="linha-proposta row g-2 align-items-center py-3 px-2">
+            <div className="col-3 col-md-1 text-center">
+                <span className="linha-dia">{String(data.getDate()).padStart(2, '0')}</span>
+                <span className="linha-mes">{data.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '')}</span>
             </div>
-        </div>
+            <div className="col-9 col-md-4">
+                <span className="linha-artista">{proposta.artista}</span>
+                <span className="small texto-secundario">{proposta.categoria} para {proposta.contratante}</span>
+            </div>
+            <div className="col-6 col-md-3 offset-3 offset-md-0 small">
+                {proposta.local}<br />{proposta.cidade}/{proposta.estado}
+            </div>
+            <div className="col-3 col-md-2 fw-semibold text-md-end">
+                {Number(proposta.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 })}
+            </div>
+            <div className="col-12 col-md-2 offset-3 offset-md-0 text-md-end">
+                <span className={`etiqueta status-${proposta.status.toLowerCase()}`}>{proposta.status}</span>
+            </div>
+        </Link>
     );
 }

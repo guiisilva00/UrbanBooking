@@ -56,7 +56,7 @@ export default function FormEditar({ propostaInicial }) {
     }
 
     return (
-        <form onSubmit={tratarEnvio} className="row g-3">
+        <form onSubmit={tratarEnvio} className="ficha row g-3 p-3 p-md-4 mx-0">
             {mensagem && <div className="alert alert-success">{mensagem}</div>}
             {erro && <div className="alert alert-danger">{erro}</div>}
 
@@ -166,8 +166,8 @@ export default function FormEditar({ propostaInicial }) {
             </div>
 
             <div className="col-12 d-flex gap-2 mt-4">
-                <button type="submit" className="btn btn-primary">Salvar Alterações</button>
-                <Link href="/propostas" className="btn btn-outline-secondary">Voltar</Link>
+                <button type="submit" className="btn btn-primary">Salvar alterações</button>
+                <Link href={`/propostas/${propostaInicial.id}`} className="btn btn-link texto-secundario">Voltar para a proposta</Link>
             </div>
         </form>
     );

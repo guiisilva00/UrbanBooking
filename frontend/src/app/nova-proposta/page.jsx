@@ -74,12 +74,12 @@ export default function NovaPropostaPage() {
 
     return (
         <div className="container py-4">
-            <h1 className="h3 mb-4">Cadastrar Nova Proposta</h1>
+            <h1 className="titulo-pagina mb-4">Nova proposta</h1>
 
             {erro && <div className="alert alert-danger">{erro}</div>}
             {sucesso && <div className="alert alert-success">{sucesso}</div>}
 
-            <form onSubmit={enviarDados} className="row g-3">
+            <form onSubmit={enviarDados} className="ficha row g-3 p-3 p-md-4 mx-0">
                 <div className="col-12 col-md-6">
                     <label htmlFor="artista" className="form-label">Artista</label>
                     <input
@@ -183,8 +183,8 @@ export default function NovaPropostaPage() {
                 </div>
 
                 <div className="col-12 d-flex gap-2 mt-4">
-                    <button type="submit" className="btn btn-primary">Salvar Proposta</button>
-                    <Link href="/propostas" className="btn btn-outline-secondary">Voltar para a lista</Link>
+                    <button type="submit" className="btn btn-primary">Salvar proposta</button>
+                    <Link href="/propostas" className="btn btn-link texto-secundario">Voltar para a lista</Link>
                 </div>
             </form>
         </div>

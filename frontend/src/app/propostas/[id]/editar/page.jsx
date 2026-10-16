@@ -18,7 +18,7 @@ export default async function EditarPropostaPage({ params }) {
 
     return (
         <div className="container py-4">
-            <h1 className="h3 mb-4">Editar Proposta #{proposta.id}</h1>
+            <h1 className="titulo-pagina mb-4">Editar {proposta.artista}</h1>
             <FormEditar propostaInicial={proposta} />
         </div>
     );
