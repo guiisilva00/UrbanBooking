@@ -17,7 +17,7 @@ export function criarPropostaService({ propostaModel }) {
   }
 
   async function criar(dados) {
-    const proposta = new Proposta({ id: 1, ...dados });
+    const proposta = new Proposta(dados);
     return propostaModel.criar({
       artista: proposta.artista,
       contratante: proposta.contratante,

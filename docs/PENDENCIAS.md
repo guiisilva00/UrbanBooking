@@ -16,7 +16,7 @@ Status válidos: `Pendente`, `Confirmado`, `Cancelado`
 ## Outros problemas
 - [x] Criar a página `/propostas/[id]` (detalhes); o card aponta para ela e hoje dá 404
 - [x] `config/database.js`: adicionar `dateStrings: true` (evita data com fuso errado)
-- [ ] `.env.example`: `DB_NAME=loja_api` → nome do banco do projeto
-- [ ] `PropostaService.criar` usa `id: 1` falso para passar na validação da classe `Proposta`
-- [ ] `PropostaController.criar`: só `TypeError` deve virar 400; o resto vai para `next(erro)`
-- [ ] Card formata valor com `toFixed`; usar `Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })`
+- [x] `.env.example`: `DB_NAME=loja_api` → nome do banco do projeto
+- [x] `PropostaService.criar` usa `id: 1` falso para passar na validação da classe `Proposta`
+- [x] `PropostaController.criar`: só `TypeError` deve virar 400; o resto vai para `next(erro)`
+- [x] Card formata valor com `toFixed`; usar `Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })`

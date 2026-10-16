@@ -24,7 +24,8 @@ export function criarPropostaController({ propostaService }) {
       const propostaNova = await propostaService.criar(req.body);
       res.status(201).json({ sucesso: true, dados: propostaNova });
     } catch (erro) {
-      res.status(400).json({ sucesso: false, erro: erro.message });
+      if (erro instanceof TypeError) return res.status(400).json({ sucesso: false, erro: erro.message });
+      next(erro);
     }
   }
 
@@ -34,7 +35,8 @@ export function criarPropostaController({ propostaService }) {
       res.status(200).json({ sucesso: true, dados: propostaAtualizada });
     } catch (erro) {
       if (erro.message.includes('não encontrada')) return res.status(404).json({ erro: erro.message });
-      res.status(400).json({ sucesso: false, erro: erro.message });
+      if (erro instanceof TypeError) return res.status(400).json({ sucesso: false, erro: erro.message });
+      next(erro);
     }
   }
 

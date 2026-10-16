@@ -1,6 +1,7 @@
 export default class Proposta {
   constructor({ id, artista, contratante, categoria, descricao = '', local, cidade, estado, valor, data, status = 'Pendente' }) {
-    if (!Number.isInteger(id) || id <= 0) {
+    // id só existe depois de salvar no banco, então na criação ele vem vazio
+    if (id !== undefined && (!Number.isInteger(id) || id <= 0)) {
       throw new TypeError('ID deve ser um inteiro positivo.');
     }
     if (typeof artista !== 'string' || artista.trim() === '') {

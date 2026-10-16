@@ -24,7 +24,7 @@ export default async function DetalhesPropostaPage({ params }) {
             <p><strong>Categoria:</strong> {proposta.categoria}</p>
             <p><strong>Data:</strong> {proposta.data}</p>
             <p><strong>Local:</strong> {proposta.local} - {proposta.cidade}/{proposta.estado}</p>
-            <p><strong>Valor:</strong> R$ {Number(proposta.valor).toFixed(2)}</p>
+            <p><strong>Valor:</strong> {Number(proposta.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
             <p><strong>Situação:</strong> {proposta.status}</p>
             {proposta.descricao && <p><strong>Descrição:</strong> {proposta.descricao}</p>}
 
